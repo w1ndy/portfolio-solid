@@ -9,7 +9,7 @@ import { Services } from './components/Services'
 
 const App: Component = () => {
   return (
-    <div class="w-220 mx-auto">
+    <div class="max-w-250 px-15 mx-auto">
       <Preamble />
       <Experience />
       <Education />
