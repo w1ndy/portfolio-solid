@@ -26,7 +26,6 @@ document.addEventListener('scroll', () => {
       }
     })
   )
-  console.log(sections)
 })
 
 export function trackSection(el: HTMLElement, accessor: () => string) {
