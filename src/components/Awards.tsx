@@ -31,19 +31,11 @@ export const Awards: Component = () => {
       description: 'MSRA Fellowship Nomination Award',
       year: 2018,
     },
-    {
-      description: 'ACM-ICPC Beijing Invitational Contest, Bronze',
-      year: 2014,
-    },
-    {
-      description: 'ACM-ICPC Shandong Provincial Contest, Silver',
-      year: 2014,
-    },
   ]
 
   return (
     <ItemizeList
-      name="Awards & Scholarships"
+      name="Awards"
       items={awards}
     />
   )

@@ -1,0 +1,14 @@
+.tocContainer {
+  @apply uppercase text-center my-10 leading-8;
+  @apply xl:(text-left fixed left-0 top-52 my-0);
+}
+
+.tocEntry {
+  @apply relative transition-all cursor-pointer select-none;
+  @apply inline-block not-last:after:(inline-block mx-2 content-["▪"]);
+  @apply xl:(block ml-0 pl-7 text-gray-400 @dark:text-gray-600 before:(content-DEFAULT absolute top-1/2 left-0 w-5 border-t border-gray-400 @dark:border-gray-600) not-last:after:hidden);
+}
+
+.tocEntryActive {
+  @apply xl:font-bold !xl:(text-black before:border-black @dark:text-gray-100 @dark:before:border-gray-100);
+}

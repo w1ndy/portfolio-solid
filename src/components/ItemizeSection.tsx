@@ -1,4 +1,7 @@
 import { Component, For, Show } from 'solid-js'
+import { trackSection } from '../store/sections'
+
+false && trackSection
 
 export const ItemizeSection: Component<{
   name: string
@@ -11,8 +14,13 @@ export const ItemizeSection: Component<{
   }[]
 }> = (props) => {
   return (
-    <div class="flex flex-row mt-5">
-      <div class="flex-none w-36 uppercase font-bold">{props.name}</div>
+    <div
+      class="flex flex-col md:flex-row mt-5"
+      use:trackSection={props.name}
+    >
+      <div class="mb-2 uppercase font-bold md:(flex-none w-36)">
+        {props.name}
+      </div>
       <div class="flex-1">
         <For each={props.items}>
           {(item) => (
@@ -22,7 +30,7 @@ export const ItemizeSection: Component<{
               </div>
               <div class="flex flex-row text-sm ml-2">
                 <div class="flex-1">&#9642; {item.description}</div>
-                <div class="flex-none">{item.time}</div>
+                <div class="flex-none pl-2">{item.time}</div>
               </div>
               <Show when={item.notes}>
                 <div class="ml-6 text-sm text-gray-500 italic">

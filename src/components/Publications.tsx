@@ -1,4 +1,7 @@
 import { Component, createSignal, For, Show } from 'solid-js'
+import { trackSection } from '../store/sections'
+
+false && trackSection
 
 const TagList: Component<{
   tags: string[]
@@ -12,7 +15,9 @@ const TagList: Component<{
         {(tag) => (
           <div
             class="cursor-pointer select-none"
-            classList={{ 'text-black': props.selected == tag }}
+            classList={{
+              'text-black @dark:text-gray-200': props.selected == tag,
+            }}
             onClick={() => props.setSelected(props.selected == tag ? '' : tag)}
           >
             {tag} ({props.tagCount[tag]})
@@ -160,8 +165,11 @@ export const Publications: Component = () => {
   const typeTags = ['First / Corresponding Author']
 
   return (
-    <div class="flex flex-row mt-5">
-      <div class="flex-none w-36">
+    <div
+      class="flex flex-col md:flex-row mt-5"
+      use:trackSection="Publications"
+    >
+      <div class="mb-2 md:(flex-none w-36)">
         <div class="uppercase font-bold">Publications</div>
         <TagList
           tags={venueTags}
