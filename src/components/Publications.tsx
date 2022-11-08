@@ -122,13 +122,6 @@ export const Publications: Component = () => {
         'IEEE Trans. Vis. Comput. Graph. 23(1): 1-10 (2017). Also appears in IEEE VIS 2016.',
       tags: new Set(['IEEE TVCG']),
     },
-    {
-      authors: '<u>D. Weng</u>, R. Chen, J. Zhang, J. Bao, Y. Zheng, Y. Wu',
-      title:
-        'Pareto-Optimal Transit Route Planning With Multi-Objective Monte-Carlo Tree Search',
-      venue: 'IEEE Trans. Intell. Transp. Syst. 22(2): 1185-1195 (2021)',
-      tags: new Set(['IEEE ITS', 'First / Corresponding Author']),
-    },
   ]
 
   const tagCount = publications
