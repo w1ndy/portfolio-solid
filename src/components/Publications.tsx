@@ -1,10 +1,33 @@
 import { Component, createSignal, For, Show } from 'solid-js'
 
+const TagList: Component<{
+  tags: string[]
+  tagCount: Record<string, number>
+  selected: string
+  setSelected: (s: string) => void
+}> = (props) => {
+  return (
+    <div class="mt-2 text-sm text-gray-500">
+      <For each={props.tags}>
+        {(tag) => (
+          <div
+            class="cursor-pointer select-none"
+            classList={{ 'text-black': props.selected == tag }}
+            onClick={() => props.setSelected(props.selected == tag ? '' : tag)}
+          >
+            {tag} ({props.tagCount[tag]})
+          </div>
+        )}
+      </For>
+    </div>
+  )
+}
+
 export const Publications: Component = () => {
   const publications = [
     {
       authors:
-        'S. Liu, <u>D. Weng&#9993;</u>, Y. Tian, Z. Deng, H. Xu, X. Zhu, H. Yin, X. Zhan, Y. Wu',
+        'S. Liu, <u>D. Weng<sup>&#9993;</sup></u>, Y. Tian, Z. Deng, H. Xu, X. Zhu, H. Yin, X. Zhan, Y. Wu',
       title:
         'ECoalVis: Visual Analysis of Control Strategies in Coal-fired Power Plants',
       venue: 'IEEE Trans. Vis. Comput. Graph. To appear (2023).',
@@ -12,21 +35,21 @@ export const Publications: Component = () => {
     },
     {
       authors:
-        'R. Chen, <u>D. Weng&#9993;</u>, Y. Huang, X. Shu, J. Zhou, G. Sun, Y. Wu',
+        'R. Chen, <u>D. Weng<sup>&#9993;</sup></u>, Y. Huang, X. Shu, J. Zhou, G. Sun, Y. Wu',
       title: 'Rigel: Transforming tabular data by declarative mapping',
       venue: 'IEEE Trans. Vis. Comput. Graph. To appear (2023).',
       tags: new Set(['IEEE TVCG', 'First / Corresponding Author']),
     },
     {
       authors:
-        'Z. Deng, <u>D. Weng&#9993;</u>, S. Liu, Y. Tian, M. Xu, Y. Wu&#9993;',
+        'Z. Deng, <u>D. Weng<sup>&#9993;</sup></u>, S. Liu, Y. Tian, M. Xu, Y. Wu<sup>&#9993;</sup>',
       title:
         'A survey of urban visual analytics: Advances and future directions',
       venue: 'Computational Visual Media. 9(1): 3-39 (2022).',
       tags: new Set(['First / Corresponding Author']),
     },
     {
-      authors: 'Z. Deng, <u>D. Weng&#9993;</u>, Y. Wu',
+      authors: 'Z. Deng, <u>D. Weng<sup>&#9993;</sup></u>, Y. Wu',
       title:
         'You are experienced: Interactive tour planning with crowdsourcing tour data from web',
       venue: 'Journal of Visualization (2022).',
@@ -140,32 +163,18 @@ export const Publications: Component = () => {
     <div class="flex flex-row mt-5">
       <div class="flex-none w-36">
         <div class="uppercase font-bold">Publications</div>
-        <div class="mt-2 text-sm text-gray-500">
-          <For each={venueTags}>
-            {(tag) => (
-              <div
-                class="cursor-pointer select-none"
-                classList={{ 'text-black': selected() == tag }}
-                onClick={() => setSelected(selected() == tag ? '' : tag)}
-              >
-                {tag} ({tagCount[tag]})
-              </div>
-            )}
-          </For>
-        </div>
-        <div class="mt-2 text-sm text-gray-500">
-          <For each={typeTags}>
-            {(tag) => (
-              <div
-                class="cursor-pointer select-none"
-                classList={{ 'text-black': selected() == tag }}
-                onClick={() => setSelected(selected() == tag ? '' : tag)}
-              >
-                {tag} ({tagCount[tag]})
-              </div>
-            )}
-          </For>
-        </div>
+        <TagList
+          tags={venueTags}
+          tagCount={tagCount}
+          selected={selected()}
+          setSelected={setSelected}
+        />
+        <TagList
+          tags={typeTags}
+          tagCount={tagCount}
+          selected={selected()}
+          setSelected={setSelected}
+        />
       </div>
       <div class="flex-1 text-sm">
         <For each={publications}>
