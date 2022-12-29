@@ -12,3 +12,7 @@
 .tocEntryActive {
   @apply xl:font-bold !xl:(text-black before:border-black @dark:text-gray-100 @dark:before:border-gray-100);
 }
+
+.smallSup sup {
+  @apply text-xs leading-2;
+}
