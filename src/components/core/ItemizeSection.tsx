@@ -1,5 +1,5 @@
 import { Component, For, Show } from 'solid-js'
-import { trackSection } from '../store/sections'
+import { trackSection } from '../../store/sections'
 
 false && trackSection
 

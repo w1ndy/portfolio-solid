@@ -1,6 +1,6 @@
 import { Component } from 'solid-js'
 import AwardData from '../assets/awards.json'
-import { ItemizeList } from './ItemizeList'
+import { ItemizeList } from './core/ItemizeList'
 
 export const Awards: Component = () => {
   return (

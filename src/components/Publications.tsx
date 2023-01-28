@@ -31,6 +31,21 @@ const TagList: Component<{
   )
 }
 
+const PublicationLink: Component<{
+  text: string
+  url: string
+}> = (props) => {
+  return (
+    <a
+      class="inline-block font-mono bg-gray-100 px-1 rounded cursor-pointer no-underline"
+      href={props.url}
+      target="_blank"
+    >
+      <span class=" text-size-[12px]">{props.text}</span>
+    </a>
+  )
+}
+
 export const Publications: Component = () => {
   const publications = PublicationData.map((pub) => ({
     ...pub,
@@ -48,6 +63,7 @@ export const Publications: Component = () => {
   const [selected, setSelected] = createSignal('')
   const venueTags = ['IEEE TVCG', 'ACM CHI', 'IEEE ITS']
   const typeTags = ['First / Corresponding Author']
+  const yearTags = ['2023', '2022', '2021', '2020', '2019', '2018', '2017']
 
   return (
     <div
@@ -68,18 +84,33 @@ export const Publications: Component = () => {
           selected={selected()}
           setSelected={setSelected}
         />
+        <TagList
+          tags={yearTags}
+          tagCount={tagCount}
+          selected={selected()}
+          setSelected={setSelected}
+        />
       </div>
       <div class="flex-1 text-sm">
         <For each={publications}>
           {(pub) => (
             <Show when={selected() == '' || pub.tags?.has(selected())}>
-              <div class="ml-4 mb-1 relative">
-                <div class="absolute -left-3 top-0">&#9642; </div>
-                <span
+              <div class="ml-4 mb-3 relative">
+                <div class="absolute -left-3 top-0 bottom-0 border-l border-gray-300"></div>
+                <div
                   class={styles.smallSup}
                   innerHTML={pub.authors}
-                ></span>
-                . <b>{pub.title}</b>, {pub.venue}
+                ></div>
+                <div>
+                  <b>{pub.title}</b>
+                </div>
+                <div>{pub.venue}</div>
+                <div class="mt-1">
+                  <PublicationLink
+                    text={pub.doi}
+                    url={`https://doi.org/${pub.doi}`}
+                  />
+                </div>
               </div>
             </Show>
           )}

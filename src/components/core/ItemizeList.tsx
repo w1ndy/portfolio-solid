@@ -1,5 +1,5 @@
 import { Component, For, Show } from 'solid-js'
-import { trackSection } from '../store/sections'
+import { trackSection } from '../../store/sections'
 
 false && trackSection
 
@@ -15,21 +15,20 @@ export const ItemizeList: Component<{
       <div class="mb-2 uppercase font-bold md:(flex-none w-36)">
         {props.name}
       </div>
-      <div class="flex-1 text-sm">
+      <ul class="flex-1 text-sm list-disc ml-3.5">
         <For each={props.items}>
           {(item) => (
-            <div class="flex flex-row">
-              <div class="flex-1 ml-4 mb-1 relative">
-                <div class="absolute -left-3 top-0">&#9642; </div>
-                {item.description}
+            <li class="list-item mb-1">
+              <div class="flex flex-row">
+                <div class="flex-1">{item.description}</div>
+                <Show when={item.year !== undefined}>
+                  <div>{item.year}</div>
+                </Show>
               </div>
-              <Show when={item.year !== undefined}>
-                <div>{item.year}</div>
-              </Show>
-            </div>
+            </li>
           )}
         </For>
-      </div>
+      </ul>
     </div>
   )
 }
