@@ -1,5 +1,12 @@
 [
   {
+    "authors": "W. Li, Z. Wang, Y. Wang, <u>D. Weng</u>, L. Xie, S. Chen, H. Zhang, H. Qu",
+    "title": "GeoCamera: Telling Stories in Geographic Visualizations with Camera Movements",
+    "venue": "Proc. of ACM CHI 2023. To appear.",
+    "tags": ["ACM CHI", "2023"],
+    "doi": "10.1145/3544548.3581470"
+  },
+  {
     "authors": "Z. Deng, S. Chen, X. Xie, G. Sun, M. Xu, <u>D. Weng<sup>&#9993;</sup></u>, Y. Wu<sup>&#9993;</sup>",
     "title": "Multilevel Visual Analysis of Aggregate Geo-Networks",
     "venue": "IEEE Trans. Vis. Comput. Graph. To appear (2023).",

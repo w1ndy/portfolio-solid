@@ -1,0 +1,12 @@
+{
+  "name": "Dr. Di Weng",
+  "name_zh": "翁荻",
+  "address": "E502, School of Software Technology, Ningbo Campus of Zhejiang University, Ningbo, Zhejiang, China",
+  "address_map": "https://goo.gl/maps/Eib57FNGsC4FTi7d9",
+  "google_scholar": "https://scholar.google.com/citations?user=Yi1KUZcAAAAJ&hl=en",
+  "social": {
+    "Mastodon": "https://social.dwe.ng/@dw_vis",
+    "Twitter": "https://twitter.com/dw_vis"
+  },
+  "email": "dweng.cs [at] outlook.com"
+}
